@@ -23,3 +23,14 @@ function randomRestaurant() {
     return chosenRestaurant;
 }
 console.log(randomRestaurant());
+
+function randomTransportation() {
+    let transporation = ['car', 'bus', 'shared ride', 'tram', 'flight'];
+    let chosenTranspo;
+    for(let i = 0; i < transporation.length; i++) {
+        let rand = Math.floor(Math.random() * ((transporation.length - 1) - 0 + 1) + 0);
+        chosenTranspo = transporation[rand];
+    }
+    return chosenTranspo;
+}
+console.log(randomTransportation());
