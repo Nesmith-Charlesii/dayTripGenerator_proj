@@ -1,5 +1,7 @@
 "use strict"; 
 
+let dayTrip = [];
+
 function randomDestination() {
     let destination = ['raleigh', 'durham', 'charlotte', 'wilmington', 'fayetteville', 'myrtle beach'];
     let chosenDestination;
@@ -8,10 +10,13 @@ function randomDestination() {
         chosenDestination = destination[rand];
         //console.log(chosenDestination);
     }
+    dayTrip.push(chosenDestination);
     return chosenDestination;
 }
 // not saved to variable because random will change every execution
-console.log(randomDestination());
+let destination = randomDestination();
+// destination holds the value from the randomDestination();
+console.log(destination);
 
 function randomRestaurant() {
     let restaurant = ['bahama breeze', 'olive garden', 'cheesecake factory', 'red lobster', 'yard house '];
@@ -20,9 +25,11 @@ function randomRestaurant() {
         let rand = Math.floor(Math.random() * ((restaurant.length - 1) - 0 + 1) + 0);
         chosenRestaurant = restaurant[rand];
     }
+    dayTrip.push(chosenRestaurant);
     return chosenRestaurant;
 }
-console.log(randomRestaurant());
+let restaurant = randomRestaurant();
+console.log(restaurant);
 
 function randomTransportation() {
     let transporation = ['car', 'bus', 'shared ride', 'tram', 'flight'];
@@ -31,9 +38,11 @@ function randomTransportation() {
         let rand = Math.floor(Math.random() * ((transporation.length - 1) - 0 + 1) + 0);
         chosenTranspo = transporation[rand];
     }
+    dayTrip.push(chosenTranspo);
     return chosenTranspo;
 }
-console.log(randomTransportation());
+let transportation = randomTransportation();
+console.log(transportation);
 
 function randomEntertainment() {
     let entertainment = ['sightsee', 'comedy club', 'museum', 'hike', 'beach'];
@@ -42,6 +51,33 @@ function randomEntertainment() {
         let rand = Math.floor(Math.random() * ((entertainment.length - 1) - 0 + 1) + 0);
         chosenEntertainment = entertainment[rand];
     }
+    dayTrip.push(chosenEntertainment);
     return chosenEntertainment;
 }
-console.log(randomEntertainment());
+let entertainment = randomEntertainment();
+console.log(entertainment);
+console.log(dayTrip);
+
+function updateDayTrip(tripUpdate) {
+    switch(tripUpdate) {
+        case "destination":
+            let updateDes = randomDestination();
+            dayTrip.shift();
+            dayTrip.unshift(updateDes);
+            dayTrip.pop();
+            console.log(dayTrip);
+            break;
+        case "restaurant": 
+            let updateRes = randomRestaurant();
+            // .splice() selects index, removes index, and inserts new value
+            // using delete creates empty spots
+            dayTrip.splice(1, 1, updateRes);
+            dayTrip.pop();
+            console.log(dayTrip);
+            break;
+        default:
+            console.log("no changes made");
+    }
+}
+
+
