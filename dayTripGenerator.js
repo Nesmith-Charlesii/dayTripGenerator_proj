@@ -20,6 +20,7 @@ function loopArray(inputArray) {
 let greeting = alert("Hello, and welcome to Day Trip Generator!");
 let userFirstName = prompt("Please enter your name");
 let reply = alert("Welcome " + userFirstName + "! Please click ok to generate your random day trip");
+document.getElementById("generator").innerHTML = "Day Trip Generator";
 
 function randomDestination() {
     let chosenDestination = loopArray(destination);
@@ -28,7 +29,6 @@ function randomDestination() {
 }
 // not saved to variable because random will change every execution
 console.log(randomDestination());
-// destination holds the value from the randomDestination();
 
 function randomRestaurant() {
     let chosenRestaurant = loopArray(restaurant);
@@ -53,6 +53,7 @@ function randomEntertainment() {
 }
 console.log(randomEntertainment());
 console.log(dayTrip);
+document.getElementById("dayTrip").innerHTML = dayTrip;
 
 function updateDayTrip(tripUpdate) {
     switch(tripUpdate) {
@@ -87,8 +88,17 @@ function updateDayTrip(tripUpdate) {
     }
 }
 
-
-
-
-
+let confirmation = true;
+let userConfirmation = confirm("If you are satisfied with your generated day trip, click OK. Otherwise, click cancel to update your day trip");
+while(userConfirmation !== confirmation) {
+    let update = prompt("Please input a value from the following list: destination, restaurant, transportation, or entertainment to update your generated day trip");
+    updateDayTrip(update);
+    console.log(dayTrip);
+    alert(update + " has been changed");
+    document.getElementById("dayTrip").innerHTML = dayTrip;    
+    userConfirmation = confirm("If you are satisfied with your generated day trip, click OK. Otherwise, click cancel to update your day trip");
+    if(userConfirmation === confirmation) {
+        alert("Enjoy your trip!");
+    }
+}
 
